@@ -13,7 +13,7 @@ namespace EmailThroughputChecker
 
         [Option('s', "strategy", DefaultValue = (int)SendingStrategy.AmazonSesApiRaw,
             HelpText =
-                "strategy to send emails: 1 -- call SendRawEmail API using AWS SDK, 2 -- call SendEmail API using AWS SDK, 3 -- call SendRawEmail API 'WITHOUT' using AWS SDK, 4 -- use SMTP protocol"
+                "strategy to send emails: 1) call SendRawEmail API using AWS SDK, 2) call SendEmail API using AWS SDK, 3) call SendRawEmail API 'WITHOUT' using AWS SDK, 4) use SMTP protocol, 5) call DeliverAsync API using SendGrid SDK"
             )]
         public SendingStrategy SendingStrategy { get; set; }
 
