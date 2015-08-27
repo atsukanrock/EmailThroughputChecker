@@ -11,13 +11,12 @@ namespace EmailThroughputChecker.MailSender
         private readonly ITransport _transport;
 
         public SendGridApiMailSender()
-            : this(new NetworkCredential(
-                       ConfigurationManager.AppSettings["SendGridUserName"],
-                       ConfigurationManager.AppSettings["SendGridPassword"])) {}
+            : this(ConfigurationManager.AppSettings["SendGridUserName"],
+                   ConfigurationManager.AppSettings["SendGridPassword"]) {}
 
-        public SendGridApiMailSender(NetworkCredential credentials)
+        public SendGridApiMailSender(string userName, string password)
         {
-            _transport = new Web(credentials);
+            _transport = new Web(new NetworkCredential(userName, password));
         }
 
         protected override void DoSend(MailMessage message)
