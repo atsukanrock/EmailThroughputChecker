@@ -20,7 +20,7 @@ namespace EmailThroughputChecker
         [HelpOption]
         public string GetUsage()
         {
-            var help = new HelpText {AddDashesToOption = true};
+            var help = new HelpText { AddDashesToOption = true };
             help.AddPreOptionsLine("Usage: EmailThroughputChecker -c <concurrency> -m <# of emails> -s <strategy>\n");
             help.AddPreOptionsLine("Options:");
             help.AddOptions(this);

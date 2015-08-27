@@ -5,6 +5,7 @@
         AmazonSesApiRaw = 1,
         AmazonSesApi,
         AmazonSesApiRawNoSdk,
-        Smtp
+        Smtp,
+        SendGridApi
     }
 }

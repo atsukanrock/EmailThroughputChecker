@@ -94,7 +94,9 @@ namespace EmailThroughputChecker
                     return new AmazonSesApiRawMailSenderNoSdk();
                 case SendingStrategy.Smtp:
                     return new SmtpMailSender();
-                default:
+				case SendingStrategy.SendGridApi:
+					return new SendGridApiMailSender();
+				default:
                     throw new InvalidEnumArgumentException("sendingStrategy", (int)sendingStrategy,
                                                            typeof(SendingStrategy));
             }

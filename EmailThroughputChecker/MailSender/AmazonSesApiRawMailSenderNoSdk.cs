@@ -34,7 +34,7 @@ namespace EmailThroughputChecker.MailSender
 
             _sha256 = SHA256.Create();
             _endpoint = string.Format("https://email.{0}.amazonaws.com/", region);
-            _httpClient = new HttpClient(new HttpClientHandler {AllowAutoRedirect = false});
+            _httpClient = new HttpClient(new HttpClientHandler { AllowAutoRedirect = false });
         }
 
         protected override void DoSend(MailMessage message)
@@ -122,7 +122,7 @@ namespace EmailThroughputChecker.MailSender
                     //Trace.WriteLine(content);
 
                     if (!response.IsSuccessStatusCode)
-                        throw new AmazonSimpleEmailServiceException(content) {StatusCode = response.StatusCode};
+                        throw new AmazonSimpleEmailServiceException(content) { StatusCode = response.StatusCode };
                 }
             }
         }

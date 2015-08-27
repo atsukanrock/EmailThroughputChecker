@@ -18,18 +18,19 @@ namespace EmailThroughputChecker
             var assembly = typeof(SmtpClient).Assembly;
             var mailWriterType = assembly.GetType("System.Net.Mail.MailWriter");
             MailWriterConstructor = mailWriterType.GetConstructor(
-                BindingFlags.Instance | BindingFlags.NonPublic, null, new[] {typeof(Stream)}, null);
+                BindingFlags.Instance | BindingFlags.NonPublic, null, new[] { typeof(Stream) }, null);
             MailMessageSendMethod = typeof(MailMessage).GetMethod("Send", BindingFlags.Instance | BindingFlags.NonPublic);
             MailWriterCloseMethod = mailWriterType.GetMethod("Close", BindingFlags.Instance | BindingFlags.NonPublic);
         }
 
         public static void Serialize(MailMessage mailMessage, Stream stream)
         {
-            var mailWriter = MailWriterConstructor.Invoke(new object[] {stream});
+            var mailWriter = MailWriterConstructor.Invoke(new object[] { stream });
             MailMessageSendMethod.Invoke(
-                mailMessage, BindingFlags.Instance | BindingFlags.NonPublic, null, new[] {mailWriter, true, true}, null);
+                mailMessage, BindingFlags.Instance | BindingFlags.NonPublic, null, new[] { mailWriter, true, true },
+                null);
             MailWriterCloseMethod.Invoke(
-                mailWriter, BindingFlags.Instance | BindingFlags.NonPublic, null, new object[] {}, null);
+                mailWriter, BindingFlags.Instance | BindingFlags.NonPublic, null, new object[] { }, null);
         }
     }
 }
